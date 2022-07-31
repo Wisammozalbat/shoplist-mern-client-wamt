@@ -1,5 +1,5 @@
-export * from './Home'
 export * from './ProductDetail'
 export * from './Products'
-export * from './Purchase'
+export * from './Purchases'
 export * from './PurchaseDetail'
+export * from './Login'

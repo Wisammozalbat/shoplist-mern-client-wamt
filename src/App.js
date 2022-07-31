@@ -1,25 +1,23 @@
 import './styles.css'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import {
-  Home,
+  Login,
   Products,
   ProductDetail,
-  Purchase,
+  Purchases,
   PurchaseDetail,
 } from './pages'
-import { Layout } from './containers/Layout'
 
-function App() {
+const App = () => {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="/purchase" element={<Purchase />} />
-        <Route path="/purchase/:id" element={<PurchaseDetail />} />
-      </Routes>
-    </Layout>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/products/:id" element={<ProductDetail />} />
+      <Route path="/purchases" element={<Purchases />} />
+      <Route path="/purchases/:id" element={<PurchaseDetail />} />
+      <Route path="*" element={<Navigate to="/purchases" replace={true} />} />
+    </Routes>
   )
 }
 
