@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { axiosClient } from '../axios/axiosClient'
+import { PurchaseModal } from '../components'
 import { PurchaseCard } from '../components/PurchaseCard'
 import { Layout } from '../containers/Layout'
 import { useLocalStorage } from '../hooks/useLocalStorage'
@@ -13,6 +14,7 @@ export const Purchases = () => {
   // eslint-disable-next-line no-unused-vars
   const [token, _, removeToken] = useLocalStorage('auth-token')
   const navigate = useNavigate()
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
   useEffect(() => {
     setTokenIsLoading(token == null)
@@ -44,6 +46,14 @@ export const Purchases = () => {
 
   return (
     <Layout>
+      <button
+        className="px-4 py-2 bg-green-200 rounded-md border border-2 border-green-400 mb-6"
+        onClick={() => {
+          setModalIsOpen(true)
+        }}
+      >
+        Create Purchase
+      </button>
       {purchases.length > 0 ? (
         <div className="grid grid-cols-4 gap-6">
           {purchases.map((purchase) => (
@@ -57,6 +67,9 @@ export const Purchases = () => {
         </div>
       ) : (
         <div>No hay compras</div>
+      )}
+      {modalIsOpen && (
+        <PurchaseModal isOpen={modalIsOpen} handleIsOpen={setModalIsOpen} />
       )}
     </Layout>
   )

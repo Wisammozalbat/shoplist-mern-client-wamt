@@ -1,1 +1,5 @@
 export * from './Sidebar'
+export * from './ProductModal'
+export * from './PurchaseCard'
+export * from './ProductsTable'
+export * from './PurchaseModal'

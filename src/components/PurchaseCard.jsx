@@ -2,7 +2,7 @@ import React from 'react'
 
 export const PurchaseCard = ({ creationDate, products, purchaseId }) => {
   const date = new Date(creationDate)
-  const store = products[0].store
+  const store = products[0]?.store || ''
   return (
     <div className="w-full px-5 py-4 flex flex-col shadow rounded-md">
       <h4 className="text-lg font-bold text-center">
@@ -14,11 +14,11 @@ export const PurchaseCard = ({ creationDate, products, purchaseId }) => {
           <p>Product</p>
           <p>Quantity</p>
         </div>
-        {products.map((product) => {
+        {products.map((product, index) => {
           return (
             <div
               className="flex flex-row gap-2 justify-between"
-              key={product._id}
+              key={product._id + index}
             >
               <p>{product.name}</p>
               <p>x{product.quantity}</p>
